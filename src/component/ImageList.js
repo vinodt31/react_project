@@ -15,15 +15,12 @@ export default function ImageList(){
 
     return(
         <div>
-        <h1>Image List</h1>
-        <div>
-            {photos.map((item)=>(
-                <div className='image_gallery'><img width="300" height="200" src={item.download_url} /></div>
-            ))}
-            
-        </div>
-        
-        
+            <h1>Image List</h1>
+            <div>
+                {photos.map((item)=>(
+                    <div className='image_gallery'><img width="300" height="200" src={item.download_url} /></div>
+                ))}
+            </div>
         </div>
     )
 }
