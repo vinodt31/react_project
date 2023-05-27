@@ -1,106 +1,38 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React from 'react';
 
-const menuData = [
-  {
-    title: 'Item 1',
-    item_id:1,
-    children: [
-      {
-        title: 'Item 1.1',
-        item_id:2,
-        children: [
-          {
-            title: 'Item 1.1.1',
-            item_id:6,
-          },
-        ],
-      },
-      {
-        title: 'Item 1.2',
-        item_id:3,
-      },
-    ],
-  },
-  {
-    title: 'Item 2',
-    item_id:4,
-    children: [
-      {
-        title: 'Item 2.1',
-        item_id:5,
-      },
-    ],
-  },
-  {
-      title: 'Item 3',
-      item_id:4
-    },
-];
-
-function Menu({items}){
-  const [selectedMenu, setSelectedMenu] = useState({});
-   return (
-    <ul>
-      {items.map((item)=>(
-        <li>
-          {item.title}
-          {item.children && (<button onClick={()=>setSelectedMenu({...selectedMenu,[item.item_id]: !selectedMenu[item.item_id]})}>{selectedMenu[item.item_id] ? "-" : "+"}</button>)}
-          {selectedMenu[item.item_id] && item.children && <Menu items = {item.children} />}
-        </li>
-      ))}
-    </ul>
-   )
-}
-
-function Productlist({getProduct, setProduct}){
- 
-  let updateProduct = (e, index)=>{
-    console.log(index, e.target.name, e.target.value)
-    let getUPdatedValue = getProduct.map((item,key)=>{
-      if(key == index){
-        return {...item, [e.target.name]:e.target.value}
-      }else{
-        return item;
-      }
-    })
-
-    setProduct(getUPdatedValue);
-  }
-
-   return (
-    <ul>
-      {getProduct.map((item, index)=>(
-        <li> {item.title} || {item.price} <input name="price" onChange={(e)=>updateProduct(e,index)} value={item.price} /></li>
-      ))}
-    </ul>
-   )
-}
-
-export default function Test(){
-  const [getMenu, setMenu] = useState(menuData)
-  const [getProduct, setProduct] = useState([])
-  let getProductList = async ()=>{
-      await axios({
-        url:"https://dummyjson.com/products",
-        method:"get",
-        data: ""
-      }).then(result=>{
-        setProduct(result.data.products);
-      });
-  }
-
-  useEffect(()=>{
-    getProductList()
-  },[])
-
-
+const MyComponent = (props) => {
+  // Render component based on prop1 and prop2
+  console.log("call child component")
   return (
     <div>
-      <h1>Test</h1>
-      <h2>Menu</h2>
-      <Menu items = {getMenu} />
-      <Productlist getProduct={getProduct} setProduct={setProduct} />
+      <h1>Prop1: {props.item}</h1>
+      <p>Prop2: </p>
     </div>
-  )
-}
+  );
+};
+
+const MyComponent2 = () => {
+  console.log("MyComponent2")
+  return (
+    <div>
+      <h1>MyComponent2 </h1>
+    </div>
+  );
+};
+
+const MemoizedMyComponent = React.memo(MyComponent);
+const MemoizedMyComponent2 = React.memo(MyComponent2);
+console.log(MemoizedMyComponent)
+
+export default () => {
+  // Render the memoized component
+  const [count, setCount] = React.useState(0);
+
+  
+  return <>
+  count : {count}
+  <button onClick={()=>setCount(count +1)}>+</button>
+    <MemoizedMyComponent item = {count} />
+    <MemoizedMyComponent2 />
+  </>
+};

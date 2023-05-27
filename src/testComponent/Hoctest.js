@@ -19,6 +19,7 @@ function Test() {
           Hoc test page
         </p>
         <Counter />
+        <Counter />
         <HOC com = {Counter} />
     </div>
   );

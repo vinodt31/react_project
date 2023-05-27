@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import Home from "./component/Home";
 import Menu from "./component/Menu";
 import Test from "./component/Test";
-import Hoctest from "./component/Hoctest";
+import Hoctest from "./testComponent/Hoctest";
 import Product from "./component/product/Product";
 import AddProduct from './component/product/AddProduct';
 import ImageList from './component/ImageList';
@@ -13,6 +13,10 @@ import Timer from "./component/Timer";
 import UploadImage from './component/product/UploadImage';
 import Updateobject from './component/Updateobject';
 import TimeoutExample from './component/TimeoutExample';
+import Registration from './component/Registration';
+import UseContextExample from "./testComponent/UseContextExample"
+import TestReactMemo from "./testComponent/TestReactMemo"
+import TestReactNenifix from "./testComponent/TestReactMemofix"
 
 function App() {
   return (
@@ -31,6 +35,12 @@ function App() {
            <Link to="/test">Test</Link> | 
            <Link to="/api_timeout">Timeout API</Link> | 
            <Link to="/update_object">Update Object</Link> | 
+           <Link to="/registration">useRef</Link> | 
+           <br /> <br />
+           <Link to="/use_context">Why use React Memo</Link> | 
+           <Link to="/use_context">React Memo</Link> | 
+
+           <br /><br />
       </nav>
         <Routes>
             <Route path="/" element={ <Home /> } />
@@ -46,6 +56,8 @@ function App() {
             <Route path="/upload_image" element={ <UploadImage /> } />
             <Route path="/api_timeout" element={ <TimeoutExample /> } />
             <Route path="/update_object" element={ <Updateobject /> } />
+            <Route path="/registration" element={ <Registration /> } />
+            <Route path="/use_context" element={ <UseContextExample /> } />
             
         </Routes>
     </BrowserRouter>

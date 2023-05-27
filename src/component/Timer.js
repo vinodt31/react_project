@@ -8,7 +8,7 @@ const App = () => {
         const [minutes, setMinutes] = React.useState(0);
         const [seconds, setSeconds] = React.useState(0);
       
-        const deadline = "2023-01-03";
+        const deadline = "2023-05-03";
       
         const getTime = () => {
           const time = Date.parse(deadline) - Date.now();    

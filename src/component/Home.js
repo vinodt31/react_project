@@ -19,7 +19,7 @@ function Home() {
     console.log("call start2")
   };
 
-  useEffect(() => {
+  useEffect(() => {  
     fetchProducts();
   }, []);
 

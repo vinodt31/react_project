@@ -26,7 +26,7 @@ export default function AddProduct(){
         {getProduct.product} || {JSON.stringify(product)}
         <div>Product Name: <input type="text" name="product" onChange={(e)=>setProduct({...getProduct,product: e.target.value})} value={getProduct.product} /></div>
         <div>Product Qty.: <input type="text" name="qty" onChange={(e)=>setProduct({...getProduct,qty: e.target.value})} value={getProduct.qty} /></div>
-        <div><button type="text" onClick={submitProduct}>Add Product</button></div>
+        <div><button type="text" onClick={submitProduct}>Add Product</button> </div>
 
 
         <h1>Product List</h1>

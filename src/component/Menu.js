@@ -51,12 +51,12 @@ function MenuList({items}){
 
 
 function Menu() {
-
+  const [menuList,setMenuList] = useState(menuData);
   return (
     <div className="home">
       <h1>Menu page</h1>
       
-      <MenuList items={menuData} />
+      <MenuList items={menuList} />
     </div>
   );
 }
